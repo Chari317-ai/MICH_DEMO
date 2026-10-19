@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MICH 公司介紹</title>
+<meta name="description" content="非官方介紹 demo：整理 MICH 地端企業 AI 的產品與業務範圍。">
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --ink: #121214;
+    --muted: #5b6070;
+    --line: #e3e5ea;
+    --accent: #2f6bff;
+    --accent-soft: #e8efff;
+    --hero-from: #0f1626;
+    --hero-to: #1d2c52;
+    --hero-ink: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d0f14;
+      --surface: #161a22;
+      --ink: #eef0f4;
+      --muted: #9aa1b2;
+      --line: #262b36;
+      --accent: #6b95ff;
+      --accent-soft: #1b2440;
+      --hero-from: #070a12;
+      --hero-to: #141f3d;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d0f14;
+    --surface: #161a22;
+    --ink: #eef0f4;
+    --muted: #9aa1b2;
+    --line: #262b36;
+    --accent: #6b95ff;
+    --accent-soft: #1b2440;
+    --hero-from: #070a12;
+    --hero-to: #141f3d;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.7;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+  .notice {
+    background: var(--accent-soft);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    padding: 6px 16px;
+  }
+
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { font-weight: 800; font-size: 22px; letter-spacing: .08em; text-decoration: none; }
+  .nav ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; font-size: 15px; }
+  .nav ul a { text-decoration: none; color: var(--muted); }
+  .nav ul a:hover { color: var(--ink); }
+  @media (max-width: 640px) { .nav ul { display: none; } }
+
+  .btn {
+    display: inline-block; padding: 12px 22px; border-radius: 999px;
+    font-weight: 600; text-decoration: none; font-size: 15px;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-ghost { border: 1px solid rgba(255,255,255,.35); color: var(--hero-ink); }
+
+  .hero {
+    background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
+    color: var(--hero-ink);
+    padding: 96px 0 88px;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ""; position: absolute; right: -120px; top: -120px;
+    width: 420px; height: 420px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(107,149,255,.35), transparent 70%);
+  }
+  .eyebrow { font-size: 14px; letter-spacing: .12em; opacity: .75; margin: 0 0 12px; }
+  .hero h1 { font-size: clamp(30px, 5.5vw, 52px); line-height: 1.25; margin: 0 0 20px; max-width: 760px; }
+  .hero p.lead { font-size: 18px; opacity: .85; max-width: 640px; margin: 0 0 32px; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 36px; }
+  .tags span { font-size: 13px; padding: 4px 12px; border-radius: 999px; background: rgba(255,255,255,.1); }
+
+  section { padding: 80px 0; }
+  .sec-label { color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: .1em; margin: 0 0 8px; }
+  h2 { font-size: clamp(24px, 3.6vw, 34px); line-height: 1.35; margin: 0 0 12px; }
+  .sec-desc { color: var(--muted); max-width: 680px; margin: 0 0 40px; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: -48px; position: relative; z-index: 2; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+  .stat b { display: block; font-size: 36px; color: var(--accent); line-height: 1.2; }
+  .stat span { color: var(--muted); font-size: 14px; }
+  @media (max-width: 640px) { .stats { grid-template-columns: 1fr; } }
+
+  .grid { display: grid; gap: 16px; }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .g4 { grid-template-columns: repeat(2, 1fr); } .g3 { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .g4 { grid-template-columns: 1fr; } }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+  .card .icon {
+    width: 44px; height: 44px; border-radius: 12px; background: var(--accent-soft); color: var(--accent);
+    display: grid; place-items: center; font-size: 22px; margin-bottom: 16px;
+  }
+  .card h3 { margin: 0 0 8px; font-size: 19px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .badge { display: inline-block; font-size: 12px; padding: 2px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-left: 6px; vertical-align: middle; }
+
+  .alt { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .alt .card { background: var(--bg); }
+
+  .steps { counter-reset: s; }
+  .step { position: relative; padding-left: 64px; }
+  .step::before {
+    counter-increment: s; content: "0" counter(s);
+    position: absolute; left: 24px; top: 26px; font-weight: 800; color: var(--accent); font-size: 20px;
+  }
+
+  .why { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .why ul { list-style: none; padding: 0; margin: 0; }
+  .why li { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .why li b { display: block; }
+  .why li span { color: var(--muted); font-size: 15px; }
+  @media (max-width: 800px) { .why { grid-template-columns: 1fr; } }
+
+  .cta { text-align: center; }
+  .cta .box {
+    background: linear-gradient(135deg, var(--hero-from), var(--hero-to)); color: var(--hero-ink);
+    border-radius: 24px; padding: 56px 24px;
+  }
+  .cta p { opacity: .85; max-width: 560px; margin: 0 auto 28px; }
+
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="notice">非官方介紹 demo，內容整理自 MICH 官網公開資訊，正確資訊請以 <a href="https://www.michai.com/zh-Hant" target="_blank" rel="noopener">官方網站</a> 為準</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">MICH</a>
+    <ul>
+      <li><a href="#solutions">解決方案</a></li>
+      <li><a href="#products">產品</a></li>
+      <li><a href="#process">導入流程</a></li>
+      <li><a href="#cases">案例</a></li>
+    </ul>
+    <a class="btn btn-primary" href="#contact" style="padding:8px 16px;font-size:14px">了解更多</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">ON-PREMISE ENTERPRISE AI</p>
+    <h1>企業 AI 放在自己的機房，<br>數據不必上雲。</h1>
+    <p class="lead">MICH 提供「地端企業 AI」：把 AI 伺服器與平台直接部署在企業內部，串接既有的 ERP、資料庫與文件，讓 AI 協助決策，同時確保敏感數據留在公司裡。</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#products">看產品</a>
+      <a class="btn btn-ghost" href="#solutions">看產業方案</a>
+    </div>
+    <div class="tags"><span>地端部署</span><span>數據不外流</span><span>串接既有系統</span><span>軟硬體一體交付</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b>0%</b><span>數據外移：算力與數據都留在企業內部</span></div>
+    <div class="stat"><b>5 階</b><span>AI Server 機種，從桌邊型到機櫃級</span></div>
+    <div class="stat"><b>4–6 週</b><span>典型導入時程，跑出第一個 AI Agent</span></div>
+  </div>
+</div>
+
+<section id="solutions">
+  <div class="wrap">
+    <p class="sec-label">業務範圍</p>
+    <h2>聚焦四個最在意數據安全的產業</h2>
+    <p class="sec-desc">這幾個產業對 AI 需求高，但同時受法規與機密限制，不適合把資料送上雲端。MICH 用同一套地端硬體與平台，針對不同場景提供解決方案。</p>
+    <div class="grid g4">
+      <div class="card"><div class="icon">🏭</div><h3>製造業</h3><p>找出影響良率的關鍵參數、最佳化產線排程，並加速客訴根因分析。</p></div>
+      <div class="card"><div class="icon">🧬</div><h3>生技／製藥</h3><p>研發與結構分析在內部完成，保護研發機密，也把資深研究員的經驗留下來。</p></div>
+      <div class="card"><div class="icon">🏛️</div><h3>政府／公部門<span class="badge">即將推出</span></h3><p>敏感資料不出機關，各單位權限分開，跨部門資訊可用自然語言查詢。</p></div>
+      <div class="card"><div class="icon">🏦</div><h3>金融<span class="badge">即將推出</span></h3><p>在機房內完成合規分析，串接 ERP 追查帳齡根因，動態評估信用額度。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="products" class="alt">
+  <div class="wrap">
+    <p class="sec-label">產品</p>
+    <h2>從一台伺服器，到一整座數據中心</h2>
+    <p class="sec-desc">硬體採用 NVIDIA、Intel、Supermicro 原廠設備，再搭配自家 AI 平台軟體，企業不需要自己整合，也不必另外組 AI 團隊。</p>
+    <div class="grid g3">
+      <div class="card"><div class="icon">🖥️</div><h3>AI Server</h3><p>M1 到 M5 共五個等級，從單一部門使用，到大型模型訓練集群都能對應。</p></div>
+      <div class="card"><div class="icon">📦</div><h3>AI Data Center</h3><p>貨櫃式的 AI 數據中心，運到現場、接上電和網路就能開始使用。</p></div>
+      <div class="card"><div class="icon">⚙️</div><h3>LowsiteOS</h3><p>主權 AI 作業系統，內含 AI Agent 應用市集，數據接上即可建模與部署 Agent。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <p class="sec-label">導入流程</p>
+    <h2>三個步驟，從討論到上線</h2>
+    <p class="sec-desc">實際時程會依專案規模調整。</p>
+    <div class="grid g3 steps">
+      <div class="card step"><h3>需求溝通</h3><p>確認應用場景、現有數據與目標，挑選合適的機種。</p></div>
+      <div class="card step"><h3>到場部署</h3><p>由台灣供應鏈出貨，到現場完成安裝、接電與聯網。</p></div>
+      <div class="card step"><h3>開箱即用</h3><p>平台已預先安裝，接上企業數據就能開始建模與部署 Agent。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cases" class="alt">
+  <div class="wrap why">
+    <div>
+      <p class="sec-label">為什麼選擇地端 AI</p>
+      <h2>和雲端 AI 最大的差別：<br>數據的主控權</h2>
+      <p class="sec-desc" style="margin:0">AI 的運算與推論都在企業內部完成，不需要把資料傳到外部服務。官網也提供線上試算工具，可比較 3 年地端與雲端的總成本。</p>
+    </div>
+    <ul>
+      <li><b>製造業：根因分析</b><span>國際製鞋集團用私有 AI 在產線定位不良原因，排查時間從數天縮短到數小時。</span></li>
+      <li><b>製造業：工時優化</b><span>車用零件供應商以歷史工單訓練模型，改善排程與產能利用率。</span></li>
+      <li><b>生技製藥：知識傳承</b><span>藥廠把資深工程師的經驗整理成內部知識庫，縮短新人上手時間。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="wrap">
+    <div class="box">
+      <h2>想進一步了解 MICH？</h2>
+      <p>完整產品規格、案例細節與 Demo 預約，請前往官方網站。</p>
+      <a class="btn btn-primary" href="https://www.michai.com/zh-Hant" target="_blank" rel="noopener">前往官方網站</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">本頁為學習用的介紹 demo，與 MICH 官方無關。內容整理自 michai.com 公開資訊（2026/10/19）。</div>
+</footer>
+
+</body>
+</html>
